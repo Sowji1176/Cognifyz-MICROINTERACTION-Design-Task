@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Insight Generator — Microinteraction Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="page-header reveal">
+    <span class="header-badge">&#10022; AI Insight Generator</span>
+    <h1>Turn Questions Into Insights</h1>
+    <p class="subtitle">Ask a question and explore an intelligent insight.</p>
+    <span class="demo-label">Simulated AI Insight &middot; Frontend Demo</span>
+  </header>
+
+  <!-- ===== MAIN INTERFACE ===== -->
+  <section class="interface reveal">
+    <div class="interface-card">
+
+      <!-- ===== START / INPUT STATE ===== -->
+      <div class="panel panel-start" id="panelStart">
+
+        <div class="try-asking" id="tryAsking">
+          <span class="try-asking-label">Try Asking</span>
+          <div class="chip-grid" id="chipGrid">
+            <button type="button" class="example-chip" data-question="What are the main concepts I should learn for data analytics?">What are the main concepts I should learn for data analytics?</button>
+            <button type="button" class="example-chip" data-question="What are the best tools for UI/UX design?">What are the best tools for UI/UX design?</button>
+            <button type="button" class="example-chip" data-question="What are the best AI tools for coding?">What are the best AI tools for coding?</button>
+            <button type="button" class="example-chip" data-question="What skills are important for becoming a data analyst?">What skills are important for becoming a data analyst?</button>
+            <button type="button" class="example-chip" data-question="What should I learn to become a UI/UX designer?">What should I learn to become a UI/UX designer?</button>
+            <button type="button" class="example-chip" data-question="What are the most important SQL concepts for beginners?">What are the most important SQL concepts for beginners?</button>
+            <button type="button" class="example-chip" data-question="What is the difference between AI and machine learning?">What is the difference between AI and machine learning?</button>
+            <button type="button" class="example-chip" data-question="How can AI help professionals improve productivity?">How can AI help professionals improve productivity?</button>
+            <button type="button" class="example-chip" data-question="What should I include in a professional portfolio?">What should I include in a professional portfolio?</button>
+            <button type="button" class="example-chip" data-question="How can I improve my data visualization skills?">How can I improve my data visualization skills?</button>
+          </div>
+        </div>
+
+        <label for="questionInput" class="input-label">Your Question</label>
+        <div class="input-row">
+          <input
+            type="text"
+            id="questionInput"
+            class="question-input"
+            placeholder="Ask a question about your data..."
+            autocomplete="off"
+          >
+        </div>
+
+        <button type="button" class="generate-btn" id="generateBtn">
+          <span class="btn-sparkle" aria-hidden="true">&#10022;</span>
+          Generate Insight
+        </button>
+
+        <p class="input-error" id="inputError" role="alert"></p>
+      </div>
+
+      <!-- ===== PROGRESS STATE ===== -->
+      <div class="panel panel-progress" id="panelProgress" aria-live="polite">
+        <div class="ai-indicator" aria-hidden="true">
+          <div class="ai-ring"></div>
+          <div class="ai-core"></div>
+        </div>
+        <p class="progress-stage" id="progressStage">Understanding your question...</p>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- ===== COMPLETION STATE ===== -->
+      <div class="panel panel-complete" id="panelComplete" aria-live="polite">
+        <div class="success-row">
+          <span class="success-check" aria-hidden="true">&#10003;</span>
+          <span class="success-text">Insight Generated</span>
+        </div>
+
+        <div class="insight-card">
+          <span class="insight-label">AI INSIGHT &middot; Demo</span>
+          <p class="insight-question-label">Question</p>
+          <p class="insight-question" id="resultQuestion"></p>
+          <p class="insight-answer-label">Insight</p>
+          <div class="insight-text" id="resultInsight"></div>
+        </div>
+
+        <button type="button" class="ask-again-btn" id="askAgainBtn">Ask Another Question</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MICROINTERACTION STATES ===== -->
+  <section class="states-section reveal">
+    <h2>Interaction States</h2>
+    <div class="states-grid">
+      <div class="state-block" id="stateStart" data-state="start">
+        <span class="state-index">01</span>
+        <span class="state-tag">Start</span>
+        <p class="state-title">&ldquo;Ask your question&rdquo;</p>
+        <p class="state-desc">A clean idle state — an empty input inviting a real question, with example prompts nearby.</p>
+      </div>
+      <div class="state-block" id="stateProgress" data-state="progress">
+        <span class="state-index">02</span>
+        <span class="state-tag">Progress</span>
+        <p class="state-title">&ldquo;AI is analyzing&hellip;&rdquo;</p>
+        <p class="state-desc">Three short stages animate in sequence, giving the impression of genuine, staged reasoning.</p>
+      </div>
+      <div class="state-block" id="stateComplete" data-state="complete">
+        <span class="state-index">03</span>
+        <span class="state-tag">Completion</span>
+        <p class="state-title">&ldquo;Insight Generated &check;&rdquo;</p>
+        <p class="state-desc">A success confirmation reveals the insight card with a smooth entrance transition.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
